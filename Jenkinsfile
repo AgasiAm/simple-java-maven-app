@@ -26,12 +26,10 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-    stage('post')  {
       post {
         always {
 		mail to: agasi.gevorgyan@gmail.com, subject: 'OK'
         	}
  	}
-	}
   }
 }
