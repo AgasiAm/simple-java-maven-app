@@ -25,10 +25,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
-		post {
-                  always {
-			mail to: agasi.gevorgyan@gmail.com, subject: 'OK'
-                }
             }
 
         }
