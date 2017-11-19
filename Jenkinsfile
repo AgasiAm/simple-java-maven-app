@@ -27,4 +27,12 @@ pipeline {
             }
         }
     }
+  post {
+        always {
+	   mail to: agasi.gevorgyan@gmail.com, subject: 'The Pipeline End :('
+        }
+        failure {
+            mail to: agasi.gevorgyan@gmail.com,, subject: 'The Pipeline failed :('
+        }
+    }
 }
