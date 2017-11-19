@@ -12,7 +12,7 @@ pipeline {
             }
 	    post {
 	        always {
-			echo 'a'
+			logstashSend failBuild: true, maxLines: 1000
         		}
 	    }
         }
