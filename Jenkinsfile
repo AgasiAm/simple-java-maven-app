@@ -26,13 +26,13 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-    }
-  post {
+     post {
         always {
-	   mail to: agasi.gevorgyan@gmail.com, subject: 'The Pipeline End :('
+           mail to: agasi.gevorgyan@gmail.com, subject: 'The Pipeline End :('
         }
         failure {
             mail to: agasi.gevorgyan@gmail.com,, subject: 'The Pipeline failed :('
         }
+      }
     }
 }
