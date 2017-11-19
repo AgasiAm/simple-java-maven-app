@@ -18,7 +18,7 @@ pipeline {
             post {
                 always {
                   junit 'target/surefire-reports/*.xml'
-		mail to: agasi.gevorgyan@gmail.com, subject: 'OK'
+		 mail to: agasi.gevorgyan@gmail.com, subject: 'OK'
                 }
             }
         }
@@ -27,5 +27,5 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-  }
+    }
 }
