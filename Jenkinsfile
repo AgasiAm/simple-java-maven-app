@@ -10,6 +10,11 @@ pipeline {
             steps {
                 sh 'mvn -B -DskipTests clean package' 
             }
+	    post {
+	        always {
+        		mail to: agasi.gevorgyan@gmail.com, subject: 'Ok'
+        		}
+	    }
         }
         stage('Test') {
             steps {
@@ -25,11 +30,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
-        }
-    }
-   post { 
-        always { 
-	mail to: agasi.gevorgyan@gmail.com, subject: 'Ok'
         }
     }
 }
