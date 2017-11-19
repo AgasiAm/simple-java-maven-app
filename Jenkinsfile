@@ -1,4 +1,6 @@
 pipeline {
+	node {
+		logstashSend failBuild: true, maxLines: 1000
     agent {
         docker {
             image 'maven:3-alpine' 
@@ -27,4 +29,5 @@ pipeline {
             }
         }
     }
+  }
 }
