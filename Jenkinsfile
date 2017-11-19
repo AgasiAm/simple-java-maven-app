@@ -10,6 +10,11 @@ pipeline {
             steps {
                 sh 'mvn -B -DskipTests clean package' 
             }
+		post {
+                        always {
+                		logstashSend failBuild: true, maxLines: 1000
+                		}
+		     }
         }
         stage('Test') {
             steps {
@@ -18,6 +23,7 @@ pipeline {
             post {
                 always {
                   junit 'target/surefire-reports/*.xml'
+  		  logstashSend failBuild: true, maxLines: 1000
                 }
             }
         }
@@ -25,6 +31,11 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
+		 post {
+                        always {
+                		logstashSend failBuild: true, maxLines: 1000
+                	}
+		      }
         }
     }
 }
