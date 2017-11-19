@@ -12,7 +12,7 @@ pipeline {
             }
 	    post {
 	        always {
-        		mail to: agasi.gevorgyan@gmail.com, subject: 'Ok'
+			echo 'a'
         		}
 	    }
         }
