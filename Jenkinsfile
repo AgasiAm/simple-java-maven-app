@@ -1,5 +1,6 @@
 pipeline {
     agent {
+		logstashSend failBuild: true, maxLines: 1000
         docker {
             image 'maven:3-alpine' 
             args '-v /root/.m2:/root/.m2' 
@@ -10,11 +11,6 @@ pipeline {
             steps {
                 sh 'mvn -B -DskipTests clean package' 
             }
-	    post {
-	        always {
-			logstashSend failBuild: true, maxLines: 1000
-        		}
-	    }
         }
         stage('Test') {
             steps {
